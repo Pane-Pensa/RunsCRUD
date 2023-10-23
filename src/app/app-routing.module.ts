@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'runes',
-    loadChildren: () => import('./pages/runes/runes.module').then( m => m.RunesPageModule)
+    loadChildren: () => import('./pages/runes-page/runes.module').then( m => m.RunesPageModule)
   },
 ];
 
