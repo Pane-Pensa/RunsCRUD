@@ -23,9 +23,12 @@ export class RunasService {
   public getAll(): Observable<Hojas[]>{
     return new Observable(observer => {
       let lista: Hojas[] = [
-        {general: "Dominación", runas_clave: "Conquistador", secundario: "Triunfo"},
-        {general: "Precision", runas_clave: "Pies veloces", secundario: "Claridad mental"}
-      ]
+        {fondo: "assets/img/runes/Domination.jpg",general: "Dominación", runas_clave: "Conquistador", secundario: "Triunfo"},
+        {fondo: "assets/img/runes/Precision.jpg",general: "Precision", runas_clave: "Pies veloces", secundario: "Claridad mental"}
+      ];
+      this._hojas.next(lista);
+      observer.next(lista);
+      observer.complete();
     });
   }
 }
