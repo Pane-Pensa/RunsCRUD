@@ -15,5 +15,9 @@
   <ion-button color="primary" fill="clear" (click)="home()">
     <ion-icon slot="icon-only" name="arrow-back-outline"/>
   </ion-button>
+
+  <!--Título de la página-->
+  <h1>Runas</h1>
+  <app-runas class="runas" *ngFor="let rn of (lista.hojas$| async)" [hoja]="rn"></app-runas>
   
 </ion-content>
