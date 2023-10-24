@@ -1,8 +1,8 @@
-<div class="contenedor">
+<div class="contenedor" (click)="hojaClick()">
   <!--Imagen de fondo-->
-  <img src="{{hoja?.fondo}}"/>
+  <img class="fondo" src="{{hoja?.fondo}}"/>
   <div class="texto-abajo">
-    Texto
+    {{hoja?.general}}
+    <img class="miniatura" src="{{hoja?.runas_clave}}"/>
   </div>
-  <!--<img class="imagen" src="assets/img/runes/Conqueror.jpg"/>-->
 </div>

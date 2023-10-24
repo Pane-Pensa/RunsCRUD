@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Hojas } from '../interfaces/hojas';
+import { Hoja } from '../interfaces/hoja';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,9 @@ export class RunasService {
   //Id de las paginas que deberemos de ir controlando
   id:number=0;
   // Lista privada de las hojas de runas
-  private _hojas: BehaviorSubject<Hojas[]> = new BehaviorSubject<Hojas[]>([]);
+  private _hojas: BehaviorSubject<Hoja[]> = new BehaviorSubject<Hoja[]>([]);
   // Lista pública que lo recibe desde la privada
-  hojas$: Observable<Hojas[]> = this._hojas.asObservable();
+  hojas$: Observable<Hoja[]> = this._hojas.asObservable();
 
   constructor() { }
 
@@ -25,11 +25,14 @@ export class RunasService {
    */
 
   // Método que recoge recoge todos las hojas de runas
-  public getAll(): Observable<Hojas[]>{
+  public getAll(): Observable<Hoja[]>{
     return new Observable(observer => {
-      let lista: Hojas[] = [
-        {id:1,fondo: "assets/img/runes/Domination.jpg",general: "Dominación", runas_clave: "Conquistador", secundario: "Triunfo"},
-        {id:2,fondo: "assets/img/runes/Precision.jpg",general: "Precision", runas_clave: "Pies veloces", secundario: "Claridad mental"}
+      let lista: Hoja[] = [
+        {id:1,fondo: "assets/img/runes/Domination.jpg",general: "Dominación", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Triunfo"},
+        {id:2,fondo: "assets/img/runes/Inspiration.jpg",general: "Inspiración", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Claridad mental"},
+        {id:3,fondo: "assets/img/runes/Precision.jpg",general: "Precisión", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Claridad mental"},
+        {id:4,fondo: "assets/img/runes/Resolve.jpg",general: "Valor", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Claridad mental"},
+        {id:5,fondo: "assets/img/runes/Sorcery.jpg",general: "Brujería", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Claridad mental"},
       ];
       this.id=2
       this._hojas.next(lista);
@@ -38,8 +41,9 @@ export class RunasService {
     });
   }
 
-  public deletePage(rune:Hojas):Observable<Hojas>{
-    return new Observable<Hojas>(observer=>{
+  // Método para eliminar una hoja
+  public deletePage(rune:Hoja):Observable<Hoja>{
+    return new Observable<Hoja>(observer=>{
       var runes=[...this._hojas.value];
       var index= runes.findIndex(rune=>rune.id==rune.id);
       if(index<0)
@@ -51,8 +55,9 @@ export class RunasService {
     })
   }
 
-  public updatePage(rune:Hojas):Observable<Hojas>{
-    return new Observable<Hojas>(observer=>{
+  // Método para actulizar los datos de una hoja
+  public updatePage(rune:Hoja):Observable<Hoja>{
+    return new Observable<Hoja>(observer=>{
       var _hojas=[...this._hojas.value];
       var index=_hojas.findIndex(h=>h.id==rune.id);
       if (index<0)
@@ -65,8 +70,9 @@ export class RunasService {
     });
   }
 
-  public addPage(rune:Hojas):Observable<Hojas>{
-    return new Observable<Hojas>(observer=>{
+  // Método para crear una nueva hoja
+  public addPage(rune:Hoja):Observable<Hoja>{
+    return new Observable<Hoja>(observer=>{
       var _hojas=[...this._hojas.value];
       rune.id=++this.id;
       _hojas.push(rune);
