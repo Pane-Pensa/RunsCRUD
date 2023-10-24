@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RunasComponent } from './components/runas/runas.component';
+import { RunasDetailComponent } from './components/runas-detail/runas-detail.component';
 
 
 
 @NgModule({
   declarations: [
     // Componentes
-    RunasComponent
+    RunasComponent,
+    RunasDetailComponent
   ],
   imports: [
     // Modulos
@@ -21,6 +23,7 @@ import { RunasComponent } from './components/runas/runas.component';
   exports: [
     // Componentes
     RunasComponent,
+    RunasDetailComponent,
     //Modules
     CommonModule,
     IonicModule,
