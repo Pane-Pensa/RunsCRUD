@@ -38,6 +38,7 @@ export class RunasService {
     });
   }
 
+  // Método para eliminar una hoja
   public deletePage(rune:Hoja):Observable<Hoja>{
     return new Observable<Hoja>(observer=>{
       var runes=[...this._hojas.value];
@@ -51,6 +52,7 @@ export class RunasService {
     })
   }
 
+  // Método para actulizar los datos de una hoja
   public updatePage(rune:Hoja):Observable<Hoja>{
     return new Observable<Hoja>(observer=>{
       var _hojas=[...this._hojas.value];
@@ -65,6 +67,7 @@ export class RunasService {
     });
   }
 
+  // Método para crear una nueva hoja
   public addPage(rune:Hoja):Observable<Hoja>{
     return new Observable<Hoja>(observer=>{
       var _hojas=[...this._hojas.value];
