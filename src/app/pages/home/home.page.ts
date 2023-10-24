@@ -20,7 +20,7 @@ export class HomePage {
 
   // Evento para el boton e ir al "runes"
   public runes(){
-    this.router.navigate(["./runes"])
+    this.router.navigate(["./runes-page"])
   }
 
 }
