@@ -1,4 +1,4 @@
-export interface Hojas {
+export interface Hoja {
     id:number,
     fondo: string,
     general: string,

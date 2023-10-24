@@ -18,6 +18,8 @@
 
   <!--Título de la página-->
   <h1>Runas</h1>
-  <app-runas class="runas" *ngFor="let rn of (lista.hojas$| async)" [hoja]="rn"></app-runas>
+  <app-runas class="runas" *ngFor="let rn of (lista.hojas$| async)" [hoja]="rn"
+  (onHojaClicked)="onHojaClicked(rn)">
+  </app-runas>
   
 </ion-content>
