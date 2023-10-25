@@ -1,0 +1,35 @@
+.modal {
+    width: max-content;
+}
+
+.secondary{
+    width: fit-content;
+}
+
+ion-segment{
+    display: flex;
+}
+.contenedor {
+    position: relative;
+    width: 100%; /* Asegura que el div ocupe todo el espacio disponible */
+    height: 400px; /* Establece una altura fija o la que desees */
+    text-align: center; /* Centra el contenido horizontalmente */
+  }
+  
+  .contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para que ocupe todo el espacio */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .contenedor p {
+    position: absolute;
+    top: 50%; /* Coloca el párrafo en el centro vertical */
+    left: 50%; /* Coloca el párrafo en el centro horizontal */
+    transform: translate(-50%, -50%); /* Lo centra correctamente */
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente para legibilidad */
+    padding: 10px; /* Añade espaciado alrededor del texto */
+  }
