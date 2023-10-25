@@ -3,7 +3,7 @@
     <ion-input label="Nombre de la Pagina" labelPlacement="start" formControlName="general"></ion-input>
   </ion-item>
   <ion-segment >
-    <ion-grid class="ion-grid">
+    <ion-grid class="ion-grid" class="modal">
       <ion-row>
         <ion-segment-button value="Domination" (click)="segmentChanged('Domination','main')">
           <ion-label>Domination</ion-label>
@@ -23,10 +23,10 @@
       </ion-row>
       <ion-row>
         <ion-segment *ngIf="mainRune=='Resolve'">
-          <ion-segment-button>
+          <ion-segment-button class="secondary">
             <ion-label>Demolish</ion-label>
           </ion-segment-button>
-          <ion-segment-button>
+          <ion-segment-button class="secondary">
             <ion-label>Second Breath</ion-label>
           </ion-segment-button>
           <ion-segment-button>
@@ -36,26 +36,26 @@
       </ion-row>
       <ion-row>
         <ion-segment *ngIf="mainRune=='Domination'">
-          <ion-segment-button>
+          <ion-segment-button class="secondary">
             <ion-label>Taste of Blood</ion-label>
           </ion-segment-button>
-          <ion-segment-button>
+          <ion-segment-button class="secondary">
             <ion-label>Devorous hunter</ion-label>
           </ion-segment-button>
-          <ion-segment-button>
+          <ion-segment-button class="secondary">
             <ion-label>Eye Collector</ion-label>
           </ion-segment-button>
         </ion-segment>
       </ion-row>
       <ion-row>
         <ion-segment *ngIf="mainRune=='Sorcery'">
-          <ion-segment-button>
+          <ion-segment-button class="secondary">
             <ion-label>Gathering Storm</ion-label>
           </ion-segment-button>
-          <ion-segment-button>
+          <ion-segment-button class="secondary">
             <ion-label>Nimbus Cloack</ion-label>
           </ion-segment-button>
-          <ion-segment-button>
+          <ion-segment-button class="secondary">
             <ion-label>Celerity</ion-label>
           </ion-segment-button>
         </ion-segment>
