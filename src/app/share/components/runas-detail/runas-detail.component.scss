@@ -1,3 +1,14 @@
+.modal {
+    width: max-content;
+}
+
+.secondary{
+    width: fit-content;
+}
+
+ion-segment{
+    display: flex;
+}
 .contenedor {
     position: relative;
     width: 100%; /* Asegura que el div ocupe todo el espacio disponible */
