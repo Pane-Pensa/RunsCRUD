@@ -28,11 +28,11 @@ export class RunasService {
   public getAll(): Observable<Hoja[]>{
     return new Observable(observer => {
       let lista: Hoja[] = [
-        {id:1,fondo: "assets/img/runes/Domination.jpg",general: "Dominación", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Triunfo"},
-        {id:2,fondo: "assets/img/runes/Inspiration.jpg",general: "Inspiración", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Claridad mental"},
-        {id:3,fondo: "assets/img/runes/Precision.jpg",general: "Precisión", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Claridad mental"},
-        {id:4,fondo: "assets/img/runes/Resolve.jpg",general: "Valor", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Claridad mental"},
-        {id:5,fondo: "assets/img/runes/Sorcery.jpg",general: "Brujería", runas_clave: "assets/img/runes/secondary/Conqueror.jpg", secundario: "Claridad mental"},
+        {id:1,fondo: "assets/img/runes/Domination.jpg",general: "Dominación", runas_clave: ["assets/img/runes/secondary/Conqueror.jpg"], secundario: ["Triunfo"]},
+        {id:2,fondo: "assets/img/runes/Inspiration.jpg",general: "Inspiración", runas_clave:[ "assets/img/runes/secondary/Conqueror.jpg"], secundario: ["Claridad mental"]},
+        {id:3,fondo: "assets/img/runes/Precision.jpg",general: "Precisión", runas_clave: ["assets/img/runes/secondary/Conqueror.jpg"], secundario: ["Claridad mental"]},
+        {id:4,fondo: "assets/img/runes/Resolve.jpg",general: "Valor", runas_clave:  ["assets/img/runes/secondary/Conqueror.jpg"], secundario: ["Claridad mental"]},
+        {id:5,fondo: "assets/img/runes/Sorcery.jpg",general: "Brujería", runas_clave: ["assets/img/runes/secondary/Conqueror.jpg"], secundario: ["Claridad mental"]},
       ];
       this.id=2
       this._hojas.next(lista);
@@ -41,6 +41,14 @@ export class RunasService {
     });
   }
 
+  public getHoja(id:number):Hoja{
+      var _hojas=[...this._hojas.value];
+      var index=_hojas.findIndex(h=>h.id==id);
+      var hoja:Hoja=_hojas[index]
+      if (index>0)
+        return hoja;
+    throw new RuneNotFoundException();
+  }
   // Método para eliminar una hoja
   public deletePage(rune:Hoja):Observable<Hoja>{
     return new Observable<Hoja>(observer=>{
