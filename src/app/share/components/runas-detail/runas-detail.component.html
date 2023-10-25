@@ -2,60 +2,106 @@
   <ion-item>
     <ion-input label="Nombre de la Pagina" labelPlacement="start" formControlName="general"></ion-input>
   </ion-item>
+
   <ion-segment >
-    <ion-grid class="ion-grid" class="modal">
-      <ion-row>
-        <ion-segment-button value="Domination" (click)="segmentChanged('Domination','main')">
-          <ion-label>Domination</ion-label>
+    <ion-grid class="ion-grid">
+      <ion-button (click)="tipoRunaPrincipal=''" *ngIf="tipoRunaPrincipal!=''">
+        {{tipoRunaPrincipal}}
+      </ion-button>
+      <ion-row *ngIf="tipoRunaPrincipal==''">
+        <ion-segment-button value="Dominacion" (click)="cambiarTipoRuna('Dominacion','principal')">
+          <ion-label>Dominacion</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="Sorcery" (click)="segmentChanged('Sorcery','main')" >
-          <ion-label>Sorcery</ion-label>
+        <ion-segment-button value="Brujeria" (click)="cambiarTipoRuna('Brujeria','principal')" >
+          <ion-label>Brujeria</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="Resolve" (click)="segmentChanged('Resolve','main')">
-          <ion-label>Resolve</ion-label>
+        <ion-segment-button value="Valor" (click)="cambiarTipoRuna('Valor','principal')">
+          <ion-label>Valor</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="Inspiration" (click)="segmentChanged('Inspiration','main')">
-          <ion-label>Inspiration</ion-label>
+        <ion-segment-button value="Inpiracion" (click)="cambiarTipoRuna('Inpiracion','principal')">
+          <ion-label>Inpiracion</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="Precision" (click)="segmentChanged('Precision','main')">
+        <ion-segment-button value="Precision" (click)="cambiarTipoRuna('Precision','principal')">
           <ion-label>Precision</ion-label>
         </ion-segment-button>
       </ion-row>
-      <ion-row>
-        <ion-segment *ngIf="mainRune=='Resolve'">
-          <ion-segment-button class="secondary">
-            <ion-label>Demolish</ion-label>
-          </ion-segment-button>
-          <ion-segment-button class="secondary">
-            <ion-label>Second Breath</ion-label>
-          </ion-segment-button>
-          <ion-segment-button>
-            <ion-label>Boneplating</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-      </ion-row>
-      <ion-row>
-        <ion-segment *ngIf="mainRune=='Domination'">
-          <ion-segment-button class="secondary">
+      <ion-grid *ngIf='tipoRunaPrincipal=="Valor"'>
+        <ion-row>
+          <ion-segment value={{runa1[0]}}>
+            <ion-segment-button (click)="cambiarRuna('Agarre','principal',0)" value="Agarre">
+              <ion-label>Agarre del perpetuo</ion-label>
+            </ion-segment-button>
+            <ion-segment-button (click)="cambiarRuna('Replica','principal',0)" value="Replica">
+              <ion-label>Replica</ion-label>
+            </ion-segment-button>
+            <ion-segment-button (click)="cambiarRuna('Guardian','principal',0)" value="Guardian">
+              <ion-label>Guardian</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-row>
+        <ion-row *ngIf="runasPrincipales[0]">
+          <ion-segment >
+            <ion-segment-button (click)="cambiarRuna('Demolicion','principal',1)">
+              <ion-label>Demolicion</ion-label>
+            </ion-segment-button>
+            <ion-segment-button (click)="cambiarRuna('Fuente de Vida','principal',1)">
+              <ion-label>Fuente de Vida</ion-label>
+            </ion-segment-button>
+            <ion-segment-button (click)="cambiarRuna('Golpe de Escudo','principal',1)">
+              <ion-label>Golpe de Escudo</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-row>
+        <ion-row *ngIf="runasPrincipales[1]">
+          <ion-segment>
+            <ion-segment-button (click)="cambiarRuna('Acondicionamiento','principal',2)">
+              <ion-label>Acondicionamiento</ion-label>
+            </ion-segment-button>
+            <ion-segment-button (click)="cambiarRuna('Segundo Aire','principal',2)">
+              <ion-label>Segundo Aire</ion-label>
+            </ion-segment-button>
+            <ion-segment-button (click)="cambiarRuna('Coraza Osea','principal',2)">
+              <ion-label>Coraza Osea</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-row>
+        <ion-row *ngIf="runasPrincipales[2]">
+          <ion-segment >
+            <ion-segment-button (click)="cambiarRuna('Crecimiento Excesivo','principal',3)">
+              <ion-label>Crecimiento Excesivo</ion-label>
+            </ion-segment-button>
+            <ion-segment-button (click)="cambiarRuna('Revitalizar','principal',3)">
+              <ion-label>Revitalizar</ion-label>
+            </ion-segment-button>
+            <ion-segment-button (click)="cambiarRuna('Inquebrantable','principal',3)">
+              <ion-label>Inquebrantable</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-row>
+      </ion-grid>
+    
+      <ion-row *ngIf="tipoRunaPrincipal=='Dominacion'">
+        <ion-segment>
+          <ion-segment-button (click)="cambiarRuna('Taste of Blood','principal',1)">
             <ion-label>Taste of Blood</ion-label>
           </ion-segment-button>
-          <ion-segment-button class="secondary">
-            <ion-label>Devorous hunter</ion-label>
+          <ion-segment-button (click)="cambiarRuna('Devorous Hunter','principal',1)">
+            <ion-label>Devorous Hunter</ion-label>
           </ion-segment-button>
-          <ion-segment-button class="secondary">
+          <ion-segment-button (click)="cambiarRuna('Eye Collector','principal',1)">
             <ion-label>Eye Collector</ion-label>
           </ion-segment-button>
         </ion-segment>
       </ion-row>
-      <ion-row>
-        <ion-segment *ngIf="mainRune=='Sorcery'">
-          <ion-segment-button class="secondary">
+      <ion-row *ngIf="tipoRunaPrincipal=='Brujeria'">
+        <ion-segment>
+          <ion-segment-button (click)="cambiarRuna('Gathering Storm','principal',1)">
             <ion-label>Gathering Storm</ion-label>
           </ion-segment-button>
-          <ion-segment-button class="secondary">
+          <ion-segment-button (click)="cambiarRuna('Nimbus Cloack','principal',1)">
             <ion-label>Nimbus Cloack</ion-label>
           </ion-segment-button>
-          <ion-segment-button class="secondary">
+          <ion-segment-button (click)="cambiarRuna('Demolish','principal',1)">
             <ion-label>Celerity</ion-label>
           </ion-segment-button>
         </ion-segment>
