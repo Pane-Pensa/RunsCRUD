@@ -13,19 +13,34 @@ export class RunasDetailComponent implements OnInit {
   form:FormGroup
   @Input() set hoja(_hoja:Hoja|null){
     if(_hoja){
-      console.log(_hoja.runas_clave_1)
       this.form.controls['id'].setValue(_hoja.id);
       this.form.controls['general'].setValue(_hoja.general);
-      this.form.controls['runas_clave_1'].setValue(_hoja.runas_clave_1);
-      this.runa1[0]=_hoja.runas_clave_1;
+      this.runasPrincipales=_hoja.runas_clave;
+      this.runasSecundarias=_hoja.secundario;
+      for (let index = 0; index < _hoja.runas_clave.length; index++) {
+       this.runasPrincipales[index]=_hoja.runas_clave[index];
+      }
+      if(_hoja.runas_clave[0].match("Agarre")||_hoja.runas_clave[0].match("Replica")||_hoja.runas_clave[0].match("Guardian")){
+        this.tipoRunaPrincipal="Valor";
+      }else if(_hoja.runas_clave[0].match("Electrocutar")||_hoja.runas_clave[0].match("Depredador")||_hoja.runas_clave[0].match("Cosecha_Oscura")||_hoja.runas_clave[0].match("Depredador")||_hoja.runas_clave[0].match("Lluvia_de_Espadas")){
+        this.tipoRunaPrincipal="Dominacion";
+      }else if(_hoja.runas_clave[0].match("Aumento_Glacial")||_hoja.runas_clave[0].match("Libro_de_Hechizos_Abierto")||_hoja.runas_clave[0].match("Primer_Golpe")){
+        this.tipoRunaPrincipal="Inspiracion"
+      }else if(_hoja.runas_clave[0].match("Estrategia_Ofensiva")||_hoja.runas_clave[0].match("Cadencia_Letal")||_hoja.runas_clave[0].match("Sobre_la_Marcha")||_hoja.runas_clave[0].match("Cadencia_Letal")||_hoja.runas_clave[0].match("Conquistador")){
+        this.tipoRunaPrincipal="Precision";
+      }else if(_hoja.runas_clave[0].match("Invocacion__Aery")||_hoja.runas_clave[0].match("Cometa_Arcano")||_hoja.runas_clave[0].match("Fase_Veloz")){
+        this.tipoRunaPrincipal="Brujeria";
+      }
+      console.log(this.runasPrincipales);
+      console.log("testeooo");
     }
   }
 
+  showMenu=false;
   tipoRunaPrincipal=""; //Este tipo de runa especificará el fondo que se usará
   runasPrincipales:Array<string>=[]; // Es un array que contiene las runas del tipo principal de runa
   runasSecundarias:Array<string>=[]; // Array que contiene las runas secundarias
   tipoRunaSecundaria="";//opcional : se usa para especificar el segundo fondo que se usará
-  runa1:Array<string>=[];
 
   //si se hace click en changeType se vacia todo y se elije el nuevo tipo de runa 
   //excepto si se hizo click en la misma
@@ -33,6 +48,7 @@ export class RunasDetailComponent implements OnInit {
   //funciones: cambiarTipoRuna(name,type), cambiarRuna(name,type,position)
 
    cambiarTipoRuna(runeType:string,type:string){
+    console.log(this.tipoRunaPrincipal+"aaaaaaaaaaaaaaaaaaaaaa");
     if(type=="principal"&&this.tipoRunaPrincipal!=runeType){
       this.tipoRunaPrincipal=runeType;
       console.log(this.tipoRunaPrincipal);
@@ -41,6 +57,9 @@ export class RunasDetailComponent implements OnInit {
       this.tipoRunaSecundaria=runeType;
       this.runasSecundarias=[];
     }
+    this.showMenu=false;
+    console.log(this.tipoRunaPrincipal+"eeeeeeeeeeeeeeeeeee");
+
    }
 
    cambiarRuna(name:string,type:string,position:number){
