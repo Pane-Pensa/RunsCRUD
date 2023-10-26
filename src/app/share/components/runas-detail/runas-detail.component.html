@@ -1,111 +1,540 @@
 <form [formGroup]="form">
   <ion-item>
-    <ion-input label="Nombre de la Pagina" labelPlacement="start" formControlName="general"></ion-input>
+    <ion-input
+      label="Nombre de la Pagina"
+      labelPlacement="start"
+      formControlName="general"
+    ></ion-input>
   </ion-item>
 
-  <ion-segment >
+  <ion-segment>
     <ion-grid class="ion-grid">
-      <ion-button (click)="tipoRunaPrincipal=''" *ngIf="tipoRunaPrincipal!=''">
-        {{tipoRunaPrincipal}}
+      <ion-button
+        (click)="showMenu=!showMenu"
+        *ngIf="tipoRunaPrincipal != ''"
+      >
+        {{ this.tipoRunaPrincipal }}
       </ion-button>
-      <ion-row *ngIf="tipoRunaPrincipal==''">
-        <ion-segment-button value="Dominacion" (click)="cambiarTipoRuna('Dominacion','principal')">
-          <ion-label>Dominacion</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Brujeria" (click)="cambiarTipoRuna('Brujeria','principal')" >
-          <ion-label>Brujeria</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Valor" (click)="cambiarTipoRuna('Valor','principal')">
-          <ion-label>Valor</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Inpiracion" (click)="cambiarTipoRuna('Inpiracion','principal')">
-          <ion-label>Inpiracion</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Precision" (click)="cambiarTipoRuna('Precision','principal')">
-          <ion-label>Precision</ion-label>
-        </ion-segment-button>
+      <!--TIPOS DE RUNAS-->
+      <ion-row *ngIf="tipoRunaPrincipal == ''||showMenu">
+        <ion-segment>
+          <ion-segment-button
+            value="Dominacion"
+            (click)="cambiarTipoRuna('Dominacion', 'principal')"
+          >
+            <ion-label>Dominacion</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            value="Brujeria"
+            (click)="cambiarTipoRuna('Brujeria', 'principal')"
+          >
+            <ion-label>Brujeria</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            value="Valor"
+            (click)="cambiarTipoRuna('Valor', 'principal')"
+          >
+            <ion-label>Valor</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            value="Inpiracion"
+            (click)="cambiarTipoRuna('Inspiracion', 'principal')"
+          >
+            <ion-label>Inspiracion</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            value="Precision"
+            (click)="cambiarTipoRuna('Precision', 'principal')"
+          >
+            <ion-label>Precision</ion-label>
+          </ion-segment-button>
+        </ion-segment>
       </ion-row>
-      <ion-grid *ngIf='tipoRunaPrincipal=="Valor"'>
+      <!--TIPOS DE RUNAS-->
+
+      <!--VALOR-->
+      <ion-grid *ngIf="tipoRunaPrincipal == 'Valor'">
         <ion-row>
-          <ion-segment value={{runa1[0]}}>
-            <ion-segment-button (click)="cambiarRuna('Agarre','principal',0)" value="Agarre" class="runa principal">
+          <ion-segment value="{{ runasPrincipales[0] }}">
+            <ion-segment-button
+              (click)="cambiarRuna('Agarre', 'principal', 0)"
+              value="Agarre"
+            >
               <ion-label>Agarre del perpetuo</ion-label>
             </ion-segment-button>
-            <ion-segment-button (click)="cambiarRuna('Replica','principal',0)" value="Replica">
+            <ion-segment-button
+              (click)="cambiarRuna('Replica', 'principal', 0)"
+              value="Replica"
+            >
               <ion-label>Replica</ion-label>
             </ion-segment-button>
-            <ion-segment-button (click)="cambiarRuna('Guardian','principal',0)" value="Guardian">
+            <ion-segment-button
+              (click)="cambiarRuna('Guardian', 'principal', 0)"
+              value="Guardian"
+            >
               <ion-label>Guardian</ion-label>
             </ion-segment-button>
           </ion-segment>
         </ion-row>
         <ion-row *ngIf="runasPrincipales[0]">
-          <ion-segment >
-            <ion-segment-button (click)="cambiarRuna('Demolicion','principal',1)">
+          <ion-segment value="{{ runasPrincipales[1] }}">
+            <ion-segment-button
+              (click)="cambiarRuna('Demolicion', 'principal', 1)"
+              value="Demolicion"
+            >
               <ion-label>Demolicion</ion-label>
             </ion-segment-button>
-            <ion-segment-button (click)="cambiarRuna('Fuente de Vida','principal',1)">
+            <ion-segment-button
+              (click)="cambiarRuna('Fuente_de_Vida', 'principal', 1)"
+              value="Fuente_de_Vida"
+            >
               <ion-label>Fuente de Vida</ion-label>
             </ion-segment-button>
-            <ion-segment-button (click)="cambiarRuna('Golpe de Escudo','principal',1)">
+            <ion-segment-button
+              (click)="cambiarRuna('Golpe_de_Escudo', 'principal', 1)"
+              value="Golpe_de_Escudo"
+            >
               <ion-label>Golpe de Escudo</ion-label>
             </ion-segment-button>
           </ion-segment>
         </ion-row>
         <ion-row *ngIf="runasPrincipales[1]">
-          <ion-segment>
-            <ion-segment-button (click)="cambiarRuna('Acondicionamiento','principal',2)">
+          <ion-segment value="{{ runasPrincipales[2] }}">
+            <ion-segment-button
+              (click)="cambiarRuna('Acondicionamiento', 'principal', 2)"
+              value="Acondicionamiento"
+            >
               <ion-label>Acondicionamiento</ion-label>
             </ion-segment-button>
-            <ion-segment-button (click)="cambiarRuna('Segundo Aire','principal',2)">
+            <ion-segment-button
+              (click)="cambiarRuna('Segundo_Aire', 'principal', 2)"
+              value="Segundo_Aire"
+            >
               <ion-label>Segundo Aire</ion-label>
             </ion-segment-button>
-            <ion-segment-button (click)="cambiarRuna('Coraza Osea','principal',2)">
+            <ion-segment-button
+              (click)="cambiarRuna('Coraza_Osea', 'principal', 2)"
+              value="Coraza_Osea"
+            >
               <ion-label>Coraza Osea</ion-label>
             </ion-segment-button>
           </ion-segment>
         </ion-row>
         <ion-row *ngIf="runasPrincipales[2]">
-          <ion-segment >
-            <ion-segment-button (click)="cambiarRuna('Crecimiento Excesivo','principal',3)">
+          <ion-segment value="{{ runasPrincipales[3] }}">
+            <ion-segment-button
+              (click)="cambiarRuna('Crecimiento_Excesivo', 'principal', 3)"
+              value="Crecimiento_Excesivo"
+            >
               <ion-label>Crecimiento Excesivo</ion-label>
             </ion-segment-button>
-            <ion-segment-button (click)="cambiarRuna('Revitalizar','principal',3)">
+            <ion-segment-button
+              (click)="cambiarRuna('Revitalizar', 'principal', 3)"
+              value="Revitalizar"
+            >
               <ion-label>Revitalizar</ion-label>
             </ion-segment-button>
-            <ion-segment-button (click)="cambiarRuna('Inquebrantable','principal',3)">
+            <ion-segment-button
+              (click)="cambiarRuna('Inquebrantable', 'principal', 3)"
+              value="Inquebrantable"
+            >
               <ion-label>Inquebrantable</ion-label>
             </ion-segment-button>
           </ion-segment>
         </ion-row>
       </ion-grid>
-    
-      <ion-row *ngIf="tipoRunaPrincipal=='Dominacion'">
-        <ion-segment>
-          <ion-segment-button (click)="cambiarRuna('Taste of Blood','principal',1)">
-            <ion-label>Taste of Blood</ion-label>
+      <!--VALOR-->
+
+      <!--DOMINACION-->
+      <ion-grid *ngIf="tipoRunaPrincipal == 'Dominacion'">
+      <ion-row>
+        <ion-segment value="{{ runasPrincipales[0] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Electrocutar', 'principal', 0)"
+            value="Electrocutar"
+          >
+            <ion-label>Electrocutar</ion-label>
           </ion-segment-button>
-          <ion-segment-button (click)="cambiarRuna('Devorous Hunter','principal',1)">
-            <ion-label>Devorous Hunter</ion-label>
+          <ion-segment-button
+            (click)="cambiarRuna('Depredador', 'principal', 0)"
+            value="Depredador"
+          >
+            <ion-label>Depredador</ion-label>
           </ion-segment-button>
-          <ion-segment-button (click)="cambiarRuna('Eye Collector','principal',1)">
-            <ion-label>Eye Collector</ion-label>
+          <ion-segment-button
+            (click)="cambiarRuna('Cosecha_Oscura', 'principal', 0)"
+            value="Cosecha_Oscura"
+          >
+            <ion-label>Cosecha Oscura</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Lluvia_de_Espadas', 'principal', 0)"
+            value="Lluvia_de_Espadas"
+          >
+            <ion-label>Lluvia de Espadas</ion-label>
           </ion-segment-button>
         </ion-segment>
       </ion-row>
-      <ion-row *ngIf="tipoRunaPrincipal=='Brujeria'">
-        <ion-segment>
-          <ion-segment-button (click)="cambiarRuna('Gathering Storm','principal',1)">
-            <ion-label>Gathering Storm</ion-label>
+      <ion-row *ngIf="runasPrincipales[0]">
+        <ion-segment value="{{ runasPrincipales[1] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Golpe_Bajo', 'principal', 1)"
+            value="Golpe_Bajo"
+          >
+            <ion-label>Golpe Bajo</ion-label>
           </ion-segment-button>
-          <ion-segment-button (click)="cambiarRuna('Nimbus Cloack','principal',1)">
-            <ion-label>Nimbus Cloack</ion-label>
+          <ion-segment-button
+            (click)="cambiarRuna('Devorous Hunter', 'principal', 1)"
+            value="Sabor_a_Sangre"
+          >
+            <ion-label>Sabor a Sangre</ion-label>
           </ion-segment-button>
-          <ion-segment-button (click)="cambiarRuna('Demolish','principal',1)">
-            <ion-label>Celerity</ion-label>
+          <ion-segment-button
+            (click)="cambiarRuna('Impacto_Súbito', 'principal', 1)"
+            value="Impacto_Súbito"
+          >
+            <ion-label>Impacto Súbito</ion-label>
           </ion-segment-button>
         </ion-segment>
       </ion-row>
+      <ion-row *ngIf="runasPrincipales[1]">
+        <ion-segment value="{{ runasPrincipales[2] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Centinela_Zombi', 'principal', 2)"
+            value="Centinela_Zombi"
+          >
+            <ion-label>Centinela Zombi</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Poro_Fantasma', 'principal', 2)"
+            value="Poro_Fantasma"
+          >
+            <ion-label>Poro Fantasma</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Colección_de_Ojos', 'principal', 2)"
+            value="Colección_de_Ojos"
+          >
+            <ion-label>Colección de Ojos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+      <ion-row *ngIf="runasPrincipales[2]">
+        <ion-segment value="{{ runasPrincipales[3] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Cazador_Implacable', 'principal', 3)"
+            value="Cazador_Implacable"
+          >
+            <ion-label>Cazador Implacable</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Cazador_Voraz', 'principal', 3)"
+            value="Cazador_Voraz"
+          >
+            <ion-label>Cazador Voraz</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Cazador_Ingenioso', 'principal', 3)"
+            value="Cazador_Ingenioso"
+          >
+            <ion-label>Cazador Ingenioso</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Cazador_Definitivo', 'principal', 3)"
+            value="Cazador_Definitivo"
+          >
+            <ion-label>Cazador Definitivo</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+    </ion-grid>
+      <!--DOMINACION-->
+
+      <!--BRUJERIA-->
+      <ion-grid *ngIf="tipoRunaPrincipal == 'Brujeria'">
+      <ion-row>
+        <ion-segment value="{{ runasPrincipales[0] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Invocacion__Aery', 'principal', 0)"
+            value="Invocacion__Aery"
+          >
+            <ion-label>Invocación: Aery</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Cometa_Arcano', 'principal', 0)"
+            value="Cometa_Arcano"
+          >
+            <ion-label>Cometa Arcano</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Fase_Veloz', 'principal', 0)"
+            value="Fase_Veloz"
+          >
+            <ion-label>Fase Veloz</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+      <ion-row *ngIf="runasPrincipales[0]">
+        <ion-segment value="{{ runasPrincipales[1] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Orbe_de_Anulación', 'principal', 1)"
+            value="Orbe_de_Anulación"
+          >
+            <ion-label>Orbe de Anulación</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Anillo_de_Flujo_de_Mana', 'principal', 1)"
+            value="Anillo_de_Flujo_de_Mana"
+          >
+            <ion-label>Anillo de Flujo de Mana</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Capa_del_Nimbo', 'principal', 1)"
+            value="Capa_del_Nimbo"
+          >
+            <ion-label>Capa del Nimbo</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+      <ion-row *ngIf="runasPrincipales[1]">
+        <ion-segment value="{{ runasPrincipales[2] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Trascendencia', 'principal', 2)"
+            value="Trascendencia"
+          >
+            <ion-label>Trascendencia</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Celeridad', 'principal', 2)"
+            value="Celeridad"
+          >
+            <ion-label>Celeridad</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Concentracion_Absoluta', 'principal', 2)"
+            value="Concentración_Absoluta"
+          >
+            <ion-label>Concentración Absoluta</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+      <ion-row *ngIf="runasPrincipales[2]">
+        <ion-segment value="{{ runasPrincipales[3] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Quemadura', 'principal', 3)"
+            value="Quemadura"
+          >
+            <ion-label>Quemadura</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Caminata_sobre_Agua', 'principal', 3)"
+            value="Caminata_sobre_Agua"
+          >
+            <ion-label>Caminata sobre Agua</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Tormenta_Creciente', 'principal', 3)"
+            value="Tormenta_Creciente"
+          >
+            <ion-label>Tormenta Creciente</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+    </ion-grid>
+      <!--BRUJERIA-->
+
+      <!--PRECISION-->
+      <ion-grid *ngIf="tipoRunaPrincipal == 'Precision'">
+        <ion-row>
+        <ion-segment value="{{ runasPrincipales[0] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Estrategia_Ofensiva', 'principal', 0)"
+            value="Estrategia_Ofensiva"
+          >
+            <ion-label>Estrategia Ofensiva</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Cadencia_Letal', 'principal', 0)"
+            value="Cadencia_Letal"
+          >
+            <ion-label>Cadencia Letal</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Sobre_la_Marcha', 'principal', 0)"
+            value="Sobre_la_Marcha"
+          >
+            <ion-label>Sobre la Marcha</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Conquistador', 'principal', 0)"
+            value="Conquistador"
+          >
+            <ion-label>Conquistador</ion-label>
+          </ion-segment-button>
+        </ion-segment> 
+      </ion-row>
+      <ion-row *ngIf="runasPrincipales[0]">
+        <ion-segment value="{{runasPrincipales[1]}}">
+          <ion-segment-button
+            (click)="cambiarRuna('Sobrecuración', 'principal',1)"
+            value="Sobrecuración"
+          >
+            <ion-label>Sobrecuración</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Triunfo', 'principal', 1)"
+            value="Triunfo"
+          >
+            <ion-label>Triunfo</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Concentración_Profunda', 'principal', 1)"
+            value="Concentración_Profunda"
+          >
+            <ion-label>Concentración Profunda</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+
+      <ion-row *ngIf="runasPrincipales[1]">
+        <ion-segment value="{{ runasPrincipales[2] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Leyenda:_Celeridad', 'principal', 2)"
+            value="Leyenda:_Celeridad"
+          >
+            <ion-label>Leyenda: Celeridad</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Leyenda:_Tenacidad', 'principal', 2)"
+            value="Leyenda:_Tenacidad"
+          >
+            <ion-label>Leyenda: Tenacidad</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Leyenda:_Linaje', 'principal', 2)"
+            value="Leyenda:_Linaje"
+          >
+            <ion-label>Leyenda: Linaje</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+      <ion-row *ngIf="runasPrincipales[1]">
+        <ion-segment value="{{ runasPrincipales[3] }}">
+          <ion-segment-button
+            (click)="cambiarRuna('Golpe_de_Gracia', 'principal', 3)"
+            value="Golpe_de_Gracia"
+          >
+            <ion-label>Golpe de Gracia</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('Corte', 'principal', 3)"
+            value="Corte"
+          >
+            <ion-label>Corte</ion-label>
+          </ion-segment-button>
+          <ion-segment-button
+            (click)="cambiarRuna('La_Última_Batalla', 'principal', 3)"
+            value="La_Última_Batalla"
+          >
+            <ion-label>La Última Batalla</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+    </ion-grid>
+      <!--PRECISION-->
+
+<!--INSPIRACION-->
+<ion-grid *ngIf="tipoRunaPrincipal == 'Inspiracion'">
+  <ion-row>
+    <ion-segment value="{{ runasPrincipales[0] }}">
+      <ion-segment-button
+        (click)="cambiarRuna('Aumento_Glacial', 'principal', 0)"
+        value="Aumento_Glacial"
+      >
+        <ion-label>Aumento Glacial</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        (click)="cambiarRuna('Libro_de_Hechizos_Abierto', 'principal', 0)"
+        value="Libro_de_Hechizos_Abierto"
+      >
+        <ion-label>Libro de Hechizos Abierto</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        (click)="cambiarRuna('Primer_Golpe', 'principal', 0)"
+        value="Primer_Golpe"
+      >
+        <ion-label>Primer Golpe</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-row>
+  <ion-row *ngIf="runasPrincipales[0]">
+    <ion-segment value="{{ runasPrincipales[1] }}">
+      <ion-segment-button
+        (click)="cambiarRuna('Destello_Hextech', 'principal', 1)"
+        value="Destello_Hextech"
+      >
+        <ion-label>Destello Hextech</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        (click)="cambiarRuna('Calzado_Magico', 'principal', 1)"
+        value="Calzado_Magico"
+      >
+        <ion-label>Calzado Má gico</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        (click)="cambiarRuna('Momento_Oportuno', 'principal', 1)"
+        value="Momento_Oportuno"
+      >
+        <ion-label>Momento Oportuno</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-row>
+  <ion-row *ngIf="runasPrincipales[1]">
+    <ion-segment value="{{ runasPrincipales[2] }}">
+      <ion-segment-button
+        (click)="cambiarRuna('Mercado_de_Futuros', 'principal', 2)"
+        value="Mercado_de_Futuros"
+      >
+        <ion-label>Mercado de Futuros</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        (click)="cambiarRuna('Desmaterializador_de_Subditos', 'principal', 2)"
+        value="Desmaterializador_de_Subditos"
+      > 
+        <ion-label>Desmaterializador de Súbditos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        (click)="cambiarRuna('Entrega_de_Galletas', 'principal', 2)"
+        value="Entrega_de_Galletas"
+      >
+        <ion-label>Entrega de Galletas</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-row>
+  <ion-row *ngIf="runasPrincipales[2]">
+    <ion-segment value="{{ runasPrincipales[3] }}">
+      <ion-segment-button
+        (click)="cambiarRuna('Perspicacia_Cosmica', 'principal', 3)"
+        value="Perspicacia_Cosmica"
+      >
+        <ion-label>Perspicacia Cósmica</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        (click)="cambiarRuna('Velocidad_de_Aproximacion', 'principal', 3)"
+        value="Velocidad_de_Aproximacion"
+      >
+        <ion-label>Velocidad de Aproximación</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        (click)="cambiarRuna('Tonico de Distorsion Temporal', 'principal', 3)"
+        value="Tonico_de_Distorsion_Temporal"
+      >
+        <ion-label>Tónico de Distorsión Temporal</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-row>
+</ion-grid>
+<!--INSPIRACION-->
     </ion-grid>
   </ion-segment>
 </form>
