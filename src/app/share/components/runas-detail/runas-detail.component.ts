@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
 import { Hoja } from 'src/app/core/interfaces/hoja';
 import { RunasService } from 'src/app/core/services/runas.service';
 
@@ -9,6 +10,40 @@ import { RunasService } from 'src/app/core/services/runas.service';
   styleUrls: ['./runas-detail.component.scss'],
 })
 export class RunasDetailComponent implements OnInit {
+
+  form: FormGroup;
+  @Input() set hoja(_hoja: Hoja | null){
+    if(_hoja){
+      this.form.controls['id'].setValue(_hoja.id);
+      this.form.controls['general'].setValue(_hoja.general);
+      this.form.controls['runas_clave'].setValue(_hoja.runas_clave);
+      this.form.controls['secundario'].setValue(_hoja.secundario);
+    }
+  }
+
+  constructor(
+    private _modal: ModalController,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      id:[null],  
+      general:['',Validators.required],
+      runas_clave:['',Validators.required],
+      secundario:['',Validators.required]
+    })
+  }
+
+  runasPrincipales: string | undefined = '';
+  runasSecundaria: string | undefined;
+
+  ngOnInit(){}
+
+  onSubmit(){
+    console.log(this.runasPrincipales);
+    this._modal.dismiss(this.form.value, 'ok');
+  }
+
+  /*
   
   form:FormGroup
   @Input() set hoja(_hoja:Hoja|null){
@@ -78,10 +113,13 @@ export class RunasDetailComponent implements OnInit {
    runasPrincipaleset(name:string,position:number){
     
    }
+   prueba: string;
   constructor(
     public runesService:RunasService,
-   public formBuilder:FormBuilder
+    public formBuilder:FormBuilder,
+    private _modal:ModalController
   ) { 
+    this.prueba = this.tipoRunaPrincipal;
     this.form=this.formBuilder.group({
       id:[null],  
       general:['',Validators.required],
@@ -91,7 +129,13 @@ export class RunasDetailComponent implements OnInit {
     })
   }
 
+  onSubmit(){
+    this._modal.dismiss(this.form.value, 'ok');
+    console.log(this.form.value)
+    console.log(this.prueba)
+  }
+
   ngOnInit(
   ) {}
-
+    */
 }

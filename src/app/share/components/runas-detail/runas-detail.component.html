@@ -1,4 +1,22 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-input label="General" labelPlacement="start" formControlName="general" type="text"></ion-input>
+  </ion-item>
+  <div class="form-group">
+    <label for="selectField1">Selecciona una opción:</label>
+    <select id="selectField1" name="runasPrincipales" [(ngModel)]="runasPrincipales">
+      <option value="opcion1">Opción 1</option>
+      <option value="opcion2">Opción 2</option>
+      <option value="opcion3">Opción 3</option>
+    </select>
+  </div>
+  <!-- Otros campos del formulario -->
+  <button (click)="onSubmit()">Guardar</button>
+</form>
+
+
+
+<!--<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <ion-item>
     <ion-input
       label="Nombre de la Pagina"
@@ -6,7 +24,7 @@
       formControlName="general"
     ></ion-input>
   </ion-item>
-
+  <ion-button type="submit" class="ion-padding" expand="full" (click)="onSubmit()"></ion-button>
   <ion-segment>
     <ion-grid class="ion-grid">
       <ion-button
@@ -15,12 +33,13 @@
       >
         {{ this.tipoRunaPrincipal }}
       </ion-button>
-      <!--TIPOS DE RUNAS-->
+      <!--TIPOS DE RUNAS
       <ion-row *ngIf="tipoRunaPrincipal == ''||showMenu">
         <ion-segment>
           <ion-segment-button
             value="Dominacion"
             (click)="cambiarTipoRuna('Dominacion', 'principal')"
+            [ngModel]="prueba"
           >
             <ion-label>Dominacion</ion-label>
           </ion-segment-button>
@@ -50,9 +69,9 @@
           </ion-segment-button>
         </ion-segment>
       </ion-row>
-      <!--TIPOS DE RUNAS-->
+      <!--TIPOS DE RUNAS
 
-      <!--VALOR-->
+      <!--VALOR
       <ion-grid *ngIf="tipoRunaPrincipal == 'Valor'">
         <ion-row>
           <ion-segment value="{{ runasPrincipales[0] }}">
@@ -143,9 +162,9 @@
           </ion-segment>
         </ion-row>
       </ion-grid>
-      <!--VALOR-->
+      <!--VALOR
 
-      <!--DOMINACION-->
+      <!--DOMINACION
       <ion-grid *ngIf="tipoRunaPrincipal == 'Dominacion'">
       <ion-row>
         <ion-segment value="{{ runasPrincipales[0] }}">
@@ -248,9 +267,9 @@
         </ion-segment>
       </ion-row>
     </ion-grid>
-      <!--DOMINACION-->
+      <!--DOMINACION
 
-      <!--BRUJERIA-->
+      <!--BRUJERIA
       <ion-grid *ngIf="tipoRunaPrincipal == 'Brujeria'">
       <ion-row>
         <ion-segment value="{{ runasPrincipales[0] }}">
@@ -341,9 +360,8 @@
         </ion-segment>
       </ion-row>
     </ion-grid>
-      <!--BRUJERIA-->
-
-      <!--PRECISION-->
+      <!--BRUJERIA
+      <!--PRECISION
       <ion-grid *ngIf="tipoRunaPrincipal == 'Precision'">
         <ion-row>
         <ion-segment value="{{ runasPrincipales[0] }}">
@@ -441,9 +459,9 @@
         </ion-segment>
       </ion-row>
     </ion-grid>
-      <!--PRECISION-->
+      <!--PRECISION
 
-<!--INSPIRACION-->
+<!--INSPIRACION
 <ion-grid *ngIf="tipoRunaPrincipal == 'Inspiracion'">
   <ion-row>
     <ion-segment value="{{ runasPrincipales[0] }}">
@@ -534,7 +552,7 @@
     </ion-segment>
   </ion-row>
 </ion-grid>
-<!--INSPIRACION-->
+<!--INSPIRACION
     </ion-grid>
   </ion-segment>
-</form>
+</form>-->
