@@ -17,7 +17,6 @@ export class RunasDetailComponent implements OnInit {
       this.form.controls['id'].setValue(_hoja.id);
       this.form.controls['general'].setValue(_hoja.general);
       this.form.controls['runas_clave'].setValue(_hoja.runas_clave);
-      this.form.controls['secundario'].setValue(_hoja.secundario);
     }
   }
 
@@ -28,18 +27,16 @@ export class RunasDetailComponent implements OnInit {
     this.form = this.formBuilder.group({
       id:[null],  
       general:['',Validators.required],
-      runas_clave:['',Validators.required],
-      secundario:['',Validators.required]
+      runas_clave:['opcion1',Validators.required]
     })
   }
 
-  runasPrincipales: string | undefined = '';
-  runasSecundaria: string | undefined;
+  runas_clave: string | undefined = '';
 
   ngOnInit(){}
 
   onSubmit(){
-    console.log(this.runasPrincipales);
+    console.log(this.runas_clave);
     this._modal.dismiss(this.form.value, 'ok');
   }
 
