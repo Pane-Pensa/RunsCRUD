@@ -1,8 +1,10 @@
 <div class="contenedor" (click)="hojaClick()">
   <!--Imagen de fondo-->
-  <img src="{{hoja?.fondo}}"/>
+  <img class="fondo" src="{{hoja?.fondo}}"/>
   <div class="texto-abajo">
-    Texto
+    {{hoja?.general}}
+    <img class="miniatura" src="assets/img/runes/secondary/{{hojaRunasClave[0]}}.png"/>
+    <!--[src]="'assets/img/runes/secondary/'+hoja?.runas_clave?'':'default'"-->
   </div>
-  <!--<img class="imagen" src="assets/img/runes/Conqueror.jpg"/>-->
 </div>
+
