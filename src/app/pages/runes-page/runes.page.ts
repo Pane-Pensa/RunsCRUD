@@ -31,6 +31,12 @@ export class RunesPage implements OnInit {
   public async onHojaClicked(hoja:Hoja){
     var onDismiss = (info: any) => {
       console.log(info);
+      switch(info.role){
+        case 'ok':{
+          this.lista.updatePage(info.data).subscribe();
+        }
+        break;
+      }
     }
     this.modalPresent(hoja, onDismiss);
   }

@@ -11,16 +11,52 @@ import { RunasService } from 'src/app/core/services/runas.service';
 })
 export class RunasDetailComponent implements OnInit {
 
+<<<<<<< HEAD
+=======
+  form: FormGroup;
+  @Input() set hoja(_hoja: Hoja | null){
+    if(_hoja){
+      this.form.controls['id'].setValue(_hoja.id);
+      this.form.controls['nombre'].setValue(_hoja.nombre);
+      this.form.controls['runas_clave'].setValue(_hoja.runas_clave);
+    }
+  }
+
+  constructor(
+    private _modal: ModalController,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      id:[null],  
+      nombre:['',Validators.required],
+      runas_clave:['opcion1',Validators.required]
+    })
+  }
+
+  runas_clave: string | undefined = 'hola';
+
+  ngOnInit(){}
+
+  onSubmit(){
+    console.log(this.runas_clave);
+    this._modal.dismiss(this.form.value, 'ok');
+  }
+
+  /*
+  
+>>>>>>> feature-marco
   form:FormGroup
   @Input() set hoja(_hoja:Hoja|null){
     if(_hoja){
       this.form.controls['id'].setValue(_hoja.id);
-      this.form.controls['general'].setValue(_hoja.general);
+      this.form.controls['nombre'].setValue(_hoja.nombre);
       this.runasPrincipales=_hoja.runas_clave;
       this.runasSecundarias=_hoja.secundario;
+
       for (let index = 0; index < _hoja.runas_clave.length; index++) {
        this.runasPrincipales[index]=_hoja.runas_clave[index];
       }
+
       if(_hoja.runas_clave[0].match("Agarre")||_hoja.runas_clave[0].match("Replica")||_hoja.runas_clave[0].match("Guardian")){
         this.tipoRunaPrincipal="Valor";
       }else if(_hoja.runas_clave[0].match("Electrocutar")||_hoja.runas_clave[0].match("Depredador")||_hoja.runas_clave[0].match("Cosecha_Oscura")||_hoja.runas_clave[0].match("Depredador")||_hoja.runas_clave[0].match("Lluvia_de_Espadas")){
@@ -32,11 +68,8 @@ export class RunasDetailComponent implements OnInit {
       }else if(_hoja.runas_clave[0].match("Invocacion__Aery")||_hoja.runas_clave[0].match("Cometa_Arcano")||_hoja.runas_clave[0].match("Fase_Veloz")){
         this.tipoRunaPrincipal="Brujeria";
       }
-      console.log(this.runasPrincipales);
-      console.log("testeooo");
     }
   }
-
   showMenu=false;
   tipoRunaPrincipal=""; //Este tipo de runa especificará el fondo que se usará
   runasPrincipales:Array<string>=[]; // Es un array que contiene las runas del tipo principal de runa
@@ -49,17 +82,14 @@ export class RunasDetailComponent implements OnInit {
   //funciones: cambiarTipoRuna(name,type), cambiarRuna(name,type,position)
 
    cambiarTipoRuna(runeType:string,type:string){
-    console.log(this.tipoRunaPrincipal+"aaaaaaaaaaaaaaaaaaaaaa");
     if(type=="principal"&&this.tipoRunaPrincipal!=runeType){
       this.tipoRunaPrincipal=runeType;
-      console.log(this.tipoRunaPrincipal);
       this.runasPrincipales=[];
     }else if(type=="secundaria"&&this.tipoRunaSecundaria!=runeType){
       this.tipoRunaSecundaria=runeType;
       this.runasSecundarias=[];
     }
     this.showMenu=false;
-    console.log(this.tipoRunaPrincipal+"eeeeeeeeeeeeeeeeeee");
 
    }
 
@@ -67,7 +97,7 @@ export class RunasDetailComponent implements OnInit {
     if(type=="principal"){
       if(this.runasPrincipales[position]!=name){
         this.runasPrincipales[position]=name;
-        console.log(this.runasPrincipales);
+
       }
     }else if(type=="secundaria"){
       if(this.runasSecundarias[position]!=name){
@@ -88,9 +118,8 @@ export class RunasDetailComponent implements OnInit {
     this.prueba = this.tipoRunaPrincipal;
     this.form=this.formBuilder.group({
       id:[null],  
-      general:['',Validators.required],
+      nombre:['',Validators.required],
       runas_clave:['',Validators.required],
-      runas_clave_1:['',Validators.required],
       runas_secundarias:['',Validators.required]
     })
   }

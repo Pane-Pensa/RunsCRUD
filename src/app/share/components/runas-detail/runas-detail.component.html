@@ -1,16 +1,34 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <ion-item>
+    <ion-input label="nombre" labelPlacement="start" formControlName="nombre" type="text"></ion-input>
+  </ion-item>
+  <div class="form-group">
+    <label for="selectField1">Selecciona una opción:</label>
+    <select id="selectField1" name="runasPrincipales" formControlName="runas_clave">
+      <option [ngValue]="'opcion1'">Opción 1</option>
+      <option [ngValue]="'opcion2'">Opción 2</option>
+      <option [ngValue]="'opcion3'">Opción 3</option>
+    </select>
+  </div>
+  <!-- Otros campos del formulario -->
+  <button (click)="onSubmit()">Guardar</button>
+</form>
+
+
+
+<!--<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <ion-item>
     <ion-input
       label="Nombre de la Pagina"
       labelPlacement="start"
-      formControlName="general"
+      formControlName="nombre"
     ></ion-input>
   </ion-item>
   <ion-button type="submit" class="ion-padding" expand="full" (click)="onSubmit()"></ion-button>
   <ion-segment>
     <ion-grid class="ion-grid">
       <ion-button
-        (click)="showMenu=!showMenu"
+        (click)="showMenu = !showMenu"
         *ngIf="tipoRunaPrincipal != ''"
       >
         {{ this.tipoRunaPrincipal }}
@@ -346,55 +364,55 @@
       <!--PRECISION-->
       <ion-grid *ngIf="tipoRunaPrincipal == 'Precision'">
         <ion-row>
-        <ion-segment value="{{ runasPrincipales[0] }}">
-          <ion-segment-button
-            (click)="cambiarRuna('Estrategia_Ofensiva', 'principal', 0)"
-            value="Estrategia_Ofensiva"
-          >
-            <ion-label>Estrategia Ofensiva</ion-label>
-          </ion-segment-button>
-          <ion-segment-button
-            (click)="cambiarRuna('Cadencia_Letal', 'principal', 0)"
-            value="Cadencia_Letal"
-          >
-            <ion-label>Cadencia Letal</ion-label>
-          </ion-segment-button>
-          <ion-segment-button
-            (click)="cambiarRuna('Sobre_la_Marcha', 'principal', 0)"
-            value="Sobre_la_Marcha"
-          >
-            <ion-label>Sobre la Marcha</ion-label>
-          </ion-segment-button>
-          <ion-segment-button
-            (click)="cambiarRuna('Conquistador', 'principal', 0)"
-            value="Conquistador"
-          >
-            <ion-label>Conquistador</ion-label>
-          </ion-segment-button>
-        </ion-segment> 
-      </ion-row>
-      <ion-row *ngIf="runasPrincipales[0]">
-        <ion-segment value="{{runasPrincipales[1]}}">
-          <ion-segment-button
-            (click)="cambiarRuna('Sobrecuración', 'principal',1)"
-            value="Sobrecuración"
-          >
-            <ion-label>Sobrecuración</ion-label>
-          </ion-segment-button>
-          <ion-segment-button
-            (click)="cambiarRuna('Triunfo', 'principal', 1)"
-            value="Triunfo"
-          >
-            <ion-label>Triunfo</ion-label>
-          </ion-segment-button>
-          <ion-segment-button
-            (click)="cambiarRuna('Concentración_Profunda', 'principal', 1)"
-            value="Concentración_Profunda"
-          >
-            <ion-label>Concentración Profunda</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-      </ion-row>
+          <ion-segment value="{{ runasPrincipales[0] }}">
+            <ion-segment-button
+              (click)="cambiarRuna('Estrategia_Ofensiva', 'principal', 0)"
+              value="Estrategia_Ofensiva"
+            >
+              <ion-label>Estrategia Ofensiva</ion-label>
+            </ion-segment-button>
+            <ion-segment-button
+              (click)="cambiarRuna('Cadencia_Letal', 'principal', 0)"
+              value="Cadencia_Letal"
+            >
+              <ion-label>Cadencia Letal</ion-label>
+            </ion-segment-button>
+            <ion-segment-button
+              (click)="cambiarRuna('Sobre_la_Marcha', 'principal', 0)"
+              value="Sobre_la_Marcha"
+            >
+              <ion-label>Sobre la Marcha</ion-label>
+            </ion-segment-button>
+            <ion-segment-button
+              (click)="cambiarRuna('Conquistador', 'principal', 0)"
+              value="Conquistador"
+            >
+              <ion-label>Conquistador</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-row>
+        <ion-row *ngIf="runasPrincipales[0]">
+          <ion-segment value="{{ runasPrincipales[1] }}">
+            <ion-segment-button
+              (click)="cambiarRuna('Sobrecuración', 'principal', 1)"
+              value="Sobrecuración"
+            >
+              <ion-label>Sobrecuración</ion-label>
+            </ion-segment-button>
+            <ion-segment-button
+              (click)="cambiarRuna('Triunfo', 'principal', 1)"
+              value="Triunfo"
+            >
+              <ion-label>Triunfo</ion-label>
+            </ion-segment-button>
+            <ion-segment-button
+              (click)="cambiarRuna('Concentración_Profunda', 'principal', 1)"
+              value="Concentración_Profunda"
+            >
+              <ion-label>Concentración Profunda</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-row>
 
       <ion-row *ngIf="runasPrincipales[1]">
         <ion-segment value="{{ runasPrincipales[2] }}">
