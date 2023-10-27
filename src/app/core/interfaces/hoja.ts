@@ -1,8 +1,8 @@
 export interface Hoja {
     id:number,
     fondo: string,
-    general: string,
-    runas_clave: string[],
-    secundario: string[],
+    nombre: string,
+    runas_clave: string,
+    runas_secundaria: string,
     miniatura?: string
 }
