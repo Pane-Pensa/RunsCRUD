@@ -21,6 +21,7 @@ export class RunasComponent  implements OnInit {
   ngOnInit() {
     this.hojaRunasClave=this.hoja?.runas_clave||[];
   }
+  
 
   // Al hacer click en la hoja
   hojaClick(){
