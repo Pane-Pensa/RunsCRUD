@@ -2,7 +2,6 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Hoja } from 'src/app/core/interfaces/hoja';
-import { RunasService } from 'src/app/core/services/runas.service';
 
 @Component({
   selector: 'app-runas-detail',
