@@ -1,13 +1,13 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <ion-item>
-    <ion-input label="General" labelPlacement="start" formControlName="general" type="text"></ion-input>
+    <ion-input label="nombre" labelPlacement="start" formControlName="nombre" type="text"></ion-input>
   </ion-item>
   <div class="form-group">
     <label for="selectField1">Selecciona una opción:</label>
-    <select id="selectField1" name="runasPrincipales" [(ngModel)]="runas_clave" [ngModelOptions]="{standalone: true}">
-      <option value="opcion1">Opción 1</option>
-      <option value="opcion2">Opción 2</option>
-      <option value="opcion3">Opción 3</option>
+    <select id="selectField1" name="runasPrincipales" formControlName="runas_clave">
+      <option [ngValue]="'opcion1'">Opción 1</option>
+      <option [ngValue]="'opcion2'">Opción 2</option>
+      <option [ngValue]="'opcion3'">Opción 3</option>
     </select>
   </div>
   <!-- Otros campos del formulario -->
@@ -21,7 +21,7 @@
     <ion-input
       label="Nombre de la Pagina"
       labelPlacement="start"
-      formControlName="general"
+      formControlName="nombre"
     ></ion-input>
   </ion-item>
   <ion-button type="submit" class="ion-padding" expand="full" (click)="onSubmit()"></ion-button>

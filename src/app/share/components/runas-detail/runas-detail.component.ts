@@ -15,7 +15,7 @@ export class RunasDetailComponent implements OnInit {
   @Input() set hoja(_hoja: Hoja | null){
     if(_hoja){
       this.form.controls['id'].setValue(_hoja.id);
-      this.form.controls['general'].setValue(_hoja.general);
+      this.form.controls['nombre'].setValue(_hoja.nombre);
       this.form.controls['runas_clave'].setValue(_hoja.runas_clave);
     }
   }
@@ -26,7 +26,7 @@ export class RunasDetailComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       id:[null],  
-      general:['',Validators.required],
+      nombre:['',Validators.required],
       runas_clave:['opcion1',Validators.required]
     })
   }
@@ -46,7 +46,7 @@ export class RunasDetailComponent implements OnInit {
   @Input() set hoja(_hoja:Hoja|null){
     if(_hoja){
       this.form.controls['id'].setValue(_hoja.id);
-      this.form.controls['general'].setValue(_hoja.general);
+      this.form.controls['nombre'].setValue(_hoja.nombre);
       this.runasPrincipales=_hoja.runas_clave;
       this.runasSecundarias=_hoja.secundario;
       for (let index = 0; index < _hoja.runas_clave.length; index++) {
@@ -119,7 +119,7 @@ export class RunasDetailComponent implements OnInit {
     this.prueba = this.tipoRunaPrincipal;
     this.form=this.formBuilder.group({
       id:[null],  
-      general:['',Validators.required],
+      nombre:['',Validators.required],
       runas_clave:['',Validators.required],
       runas_clave_1:['',Validators.required],
       runas_secundarias:['',Validators.required]

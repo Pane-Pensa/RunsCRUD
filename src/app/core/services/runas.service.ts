@@ -28,11 +28,11 @@ export class RunasService {
   public getAll(): Observable<Hoja[]>{
     return new Observable(observer => {
       let lista: Hoja[] = [
-        {id:1,fondo: "assets/img/runes/Dominacion.jpg",general: "Dominación", runas_clave: "Cosecha_Oscura", secundario: "Capa_del_Nimbo"},
-        {id:2,fondo: "assets/img/runes/Inspiracion.jpg",general: "Inspiración", runas_clave: "Aumento_Glacial", secundario: "Claridad mental"},
-        {id:3,fondo: "assets/img/runes/Precision.jpg",general: "Precisión", runas_clave: "Conquistador", secundario: "Claridad mental"},
-        {id:4,fondo: "assets/img/runes/Valor.jpg",general: "Valor", runas_clave: "Replica", secundario: "Claridad mental"},
-        {id:5,fondo: "assets/img/runes/Brujeria.jpg",general: "Brujería", runas_clave: "Cometa_Arcano", secundario: "Claridad mental"},
+        {id:1,fondo: "assets/img/runes/Dominacion.jpg",nombre: "Dominación", runas_clave: "Cosecha_Oscura", secundario: "Capa_del_Nimbo"},
+        {id:2,fondo: "assets/img/runes/Inspiracion.jpg",nombre: "Inspiración", runas_clave: "Aumento_Glacial", secundario: "Claridad mental"},
+        {id:3,fondo: "assets/img/runes/Precision.jpg",nombre: "Precisión", runas_clave: "Conquistador", secundario: "Claridad mental"},
+        {id:4,fondo: "assets/img/runes/Valor.jpg",nombre: "Valor", runas_clave: "Replica", secundario: "Claridad mental"},
+        {id:5,fondo: "assets/img/runes/Brujeria.jpg",nombre: "Brujería", runas_clave: "Cometa_Arcano", secundario: "Claridad mental"},
       ];
       this.id=5
       this._hojas.next(lista);
