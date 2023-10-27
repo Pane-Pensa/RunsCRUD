@@ -31,7 +31,7 @@ export class RunasDetailComponent implements OnInit {
     })
   }
 
-  runas_clave: string | undefined = '';
+  runas_clave: string | undefined = 'hola';
 
   ngOnInit(){}
 
