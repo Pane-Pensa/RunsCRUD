@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
 import { Hoja } from 'src/app/core/interfaces/hoja';
 import { RunasService } from 'src/app/core/services/runas.service';
 
@@ -9,12 +10,43 @@ import { RunasService } from 'src/app/core/services/runas.service';
   styleUrls: ['./runas-detail.component.scss'],
 })
 export class RunasDetailComponent implements OnInit {
+
+  form: FormGroup;
+  @Input() set hoja(_hoja: Hoja | null){
+    if(_hoja){
+      this.form.controls['id'].setValue(_hoja.id);
+      this.form.controls['nombre'].setValue(_hoja.nombre);
+      this.form.controls['runas_clave'].setValue(_hoja.runas_clave);
+    }
+  }
+
+  constructor(
+    private _modal: ModalController,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      id:[null],  
+      nombre:['',Validators.required],
+      runas_clave:['opcion1',Validators.required]
+    })
+  }
+
+  runas_clave: string | undefined = 'hola';
+
+  ngOnInit(){}
+
+  onSubmit(){
+    console.log(this.runas_clave);
+    this._modal.dismiss(this.form.value, 'ok');
+  }
+
+  /*
   
   form:FormGroup
   @Input() set hoja(_hoja:Hoja|null){
     if(_hoja){
       this.form.controls['id'].setValue(_hoja.id);
-      this.form.controls['general'].setValue(_hoja.general);
+      this.form.controls['nombre'].setValue(_hoja.nombre);
       this.runasPrincipales=_hoja.runas_clave;
       this.runasSecundarias=_hoja.secundario;
 
@@ -74,19 +106,28 @@ export class RunasDetailComponent implements OnInit {
    runasPrincipaleset(name:string,position:number){
     
    }
+   prueba: string;
   constructor(
     public runesService:RunasService,
-   public formBuilder:FormBuilder
+    public formBuilder:FormBuilder,
+    private _modal:ModalController
   ) { 
+    this.prueba = this.tipoRunaPrincipal;
     this.form=this.formBuilder.group({
       id:[null],  
-      general:['',Validators.required],
+      nombre:['',Validators.required],
       runas_clave:['',Validators.required],
       runas_secundarias:['',Validators.required]
     })
   }
 
+  onSubmit(){
+    this._modal.dismiss(this.form.value, 'ok');
+    console.log(this.form.value)
+    console.log(this.prueba)
+  }
+
   ngOnInit(
   ) {}
-
+    */
 }
