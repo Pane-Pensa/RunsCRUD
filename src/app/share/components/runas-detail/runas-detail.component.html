@@ -5,9 +5,63 @@
   <div class="form-group">
     <label for="selectField1">Selecciona una opción:</label>
     <select id="selectField1" name="runasPrincipales" formControlName="runas_clave">
-      <option [ngValue]="'opcion1'">Opción 1</option>
-      <option [ngValue]="'opcion2'">Opción 2</option>
-      <option [ngValue]="'opcion3'">Opción 3</option>
+      <option [ngValue]="'Dominación'">Dominación</option>
+      <option [ngValue]="'Inspiración'">Inspiración</option>
+      <option [ngValue]="'Precisión'">Precisión</option>
+      <option [ngValue]="'Valor'">Valor</option>
+      <option [ngValue]="'Brujería'">Brujería</option>
+    </select>
+  </div>
+
+  <!--Cuando hayas elegido la runa_clave como Dominación-->
+  <div class="form-group" *ngIf="form.get('runas_clave')?.value == 'Dominación'">
+    <label for="selectField2">Selecciona una opción:</label>
+    <select id="selectField2" name="runasSecundárias" formControlName="runas_secundaria">
+      <option [ngValue]="'Electrocutar'">Electrocutar</option>
+      <option [ngValue]="'Depredador'">Depredador</option>
+      <option [ngValue]="'Cosecha_Oscura'">Cosecha Oscura</option>
+      <option [ngValue]="'Lluvia_De_Espadas'">Lluvia de Espadas</option>
+    </select>
+  </div>
+
+  <!--Cuando hayas elegido la runa_clave como Dominación-->
+  <div class="form-group" *ngIf="form.get('runas_clave')?.value == 'Inspiración'">
+    <label for="selectField2">Selecciona una opción:</label>
+    <select id="selectField2" name="runasSecundárias" formControlName="runas_secundaria">
+      <option [ngValue]="'Aumento_Glacial'">Aumento Glacial</option>
+      <option [ngValue]="'Libro_De_Hechizos_Abierto'">Libro de Hechizos Abiertos</option>
+      <option [ngValue]="'Primer_Golpe'">Primer Golpe</option>
+    </select>
+  </div>
+  
+  <!--Cuando hayas elegido la runa_clave como Precisión-->
+  <div class="form-group" *ngIf="form.get('runas_clave')?.value == 'Precisión'">
+    <label for="selectField2">Selecciona una opción:</label>
+    <select id="selectField2" name="runasSecundárias" formControlName="runas_secundaria">
+      <option [ngValue]="'Estrategia_Ofensiva'">Estrategia Ofensiva</option>
+      <option [ngValue]="'Candencia_Letal'">Cadencia Letal</option>
+      <option [ngValue]="'Sobre_La_Marcha'">Sobre la Marcha</option>
+      <option [ngValue]="'Conquistador'">Conquistador</option>
+    </select>
+  </div>
+
+  <!--Cuando hayas elegido la runa_clave como Valor-->
+  <div class="form-group" *ngIf="form.get('runas_clave')?.value == 'Valor'">
+    <label for="selectField2">Selecciona una opción:</label>
+    <select id="selectField2" name="runasSecundárias" formControlName="runas_secundaria">
+      <option [ngValue]="'Agarre_Del_Perpetuo'">Agarre del perpetuo</option>
+      <option [ngValue]="'Replica'">Réplica</option>
+      <option [ngValue]="'Guardian'">Guardián</option>
+    </select>
+  </div>
+
+  <!--Cuando hayas elegido la runa_clave como Brujería-->
+  <div class="form-group" *ngIf="form.get('runas_clave')?.value == 'Brujería'">
+    <label for="selectField2">Selecciona una opción:</label>
+    <select id="selectField2" name="runasSecundárias" formControlName="runas_secundaria">
+      <option [ngValue]="'Invocación__Aery'">Invocación Aery</option>
+      <option [ngValue]="'Cometa_Arcano'">Cometa Arcano</option>
+      <option [ngValue]="'Fase_Veloz'">Fase Veloz</option>
     </select>
   </div>
   <!-- Otros campos del formulario -->
