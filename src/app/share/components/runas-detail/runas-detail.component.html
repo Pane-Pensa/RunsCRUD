@@ -1,6 +1,12 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <ion-item>
     <ion-input label="nombre" labelPlacement="start" formControlName="nombre" type="text"></ion-input>
+    <ion-buttons slot="end">
+      <!--Cuando estemos en modo edición aparecera este boton-->
+      <ion-button color="primary" fill="clear" (click)="onDelete()">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-item>
   <div class="form-group">
     <label for="selectField1">Selecciona una opción:</label>

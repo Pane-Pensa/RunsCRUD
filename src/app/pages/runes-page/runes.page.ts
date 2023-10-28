@@ -36,6 +36,10 @@ export class RunesPage implements OnInit {
           this.lista.updatePage(info.data).subscribe();
         }
         break;
+        case 'delete':{
+          this.lista.deletePage(info.data).subscribe();
+        }
+        break;
       }
     }
     this.modalPresent(hoja, onDismiss);

@@ -51,16 +51,16 @@ export class RunasService {
     throw new RuneNotFoundException();
   }
   // Método para eliminar una hoja
-  public deletePage(rune:Hoja):Observable<Hoja>{
-    return new Observable<Hoja>(observer=>{
+  public deletePage(rune:Hoja):Observable<Hoja[]>{
+    return new Observable(observer=>{
       var runes=[...this._hojas.value];
       var index= runes.findIndex(rune=>rune.id==rune.id);
       if(index<0)
         throw new RuneNotFoundException();
-    runes=[...runes.splice(0,index),...runes.splice(0,index+1)];
-    this._hojas.next(runes);
-    observer.next(runes[index]);
-    observer.complete();
+      runes=[...runes.slice(0,index),...runes.slice(index+1)];
+      this._hojas.next(runes);
+      observer.next(runes);
+      observer.complete;
     })
   }
 
@@ -115,7 +115,7 @@ export class RunasService {
       } else if(rune.runas_clave == 'Brujería'){
         rune.fondo = 'assets/img/runes/Brujeria.jpg';
         if(rune.runas_secundaria == 'Invocación__Aery'){
-          rune.miniatura = 'assets/img/runes/secondary/Invocación__Aery.png';
+          rune.miniatura = 'assets/img/runes/secondary/Invocacion__Aery.png';
         } else if(rune.runas_secundaria == 'Cometa_Arcano'){
           rune.miniatura = 'assets/img/runes/secondary/Cometa_Arcano.png';
         } else if(rune.runas_secundaria == 'Fase_Veloz'){
