@@ -37,5 +37,9 @@ export class RunasDetailComponent implements OnInit {
   onSubmit(){
     this._modal.dismiss(this.form.value, 'ok');
   }
+
+  onDelete(){
+    this._modal.dismiss(this.form.value, 'delete')
+  }
     
 }
