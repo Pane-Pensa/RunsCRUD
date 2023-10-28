@@ -8,9 +8,9 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export class RunasComponent  implements OnInit {
   @Input() hoja?:{
     fondo?: string,
-    general?: string,
-    runas_clave?: string[],
-    secundario?: string[],
+    nombre?: string,
+    runas_clave?: string,
+    runas_secundaria?: string,
     miniatura?: string
   }
   // Cuando hagamos click en la hoja
@@ -19,12 +19,13 @@ export class RunasComponent  implements OnInit {
   constructor() { }
   hojaRunasClave:Array<string>=[];
   ngOnInit() {
-    this.hojaRunasClave=this.hoja?.runas_clave||[];
   }
+  
 
   // Al hacer click en la hoja
   hojaClick(){
     this.onHojaClicked.emit();
+
   }
 
 }
