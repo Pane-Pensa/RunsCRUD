@@ -17,7 +17,7 @@ export class RunasComponent  implements OnInit {
   @Output() onHojaClicked: EventEmitter<void> = new EventEmitter<void>();
   
   constructor() { }
-  hojaRunasClave:Array<string>=[];
+
   ngOnInit() {
   }
   
@@ -25,7 +25,6 @@ export class RunasComponent  implements OnInit {
   // Al hacer click en la hoja
   hojaClick(){
     this.onHojaClicked.emit();
-
   }
 
 }
