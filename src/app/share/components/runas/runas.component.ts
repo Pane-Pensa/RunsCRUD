@@ -10,13 +10,14 @@ export class RunasComponent  implements OnInit {
     fondo?: string,
     nombre?: string,
     runas_clave?: string,
-    secundario?: string
+    runas_secundaria?: string,
+    miniatura?: string
   }
   // Cuando hagamos click en la hoja
   @Output() onHojaClicked: EventEmitter<void> = new EventEmitter<void>();
   
   constructor() { }
-  hojaRunasClave:Array<string>=[];
+
   ngOnInit() {
   }
   
@@ -24,7 +25,6 @@ export class RunasComponent  implements OnInit {
   // Al hacer click en la hoja
   hojaClick(){
     this.onHojaClicked.emit();
-
   }
 
 }

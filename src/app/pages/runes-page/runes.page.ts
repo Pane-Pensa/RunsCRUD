@@ -36,18 +36,38 @@ export class RunesPage implements OnInit {
           this.lista.updatePage(info.data).subscribe();
         }
         break;
+        case 'delete':{
+          this.lista.deletePage(info.data).subscribe();
+        }
+        break;
       }
     }
     this.modalPresent(hoja, onDismiss);
   }
 
+  // Método para cuando le hagamos click al boton de nuevo nos salga el modal y añadamos los datos
+  onNewHoja(){
+    var onDismiss = (data:any) => {
+      console.log(data);
+      switch (data.role) {
+        case 'ok':
+          this.lista.addPage(data.data).subscribe();
+          break;
+        default:
+          console.error("Error");
+          break;
+      }
+    }
+    this.modalPresent(null, onDismiss);
+  }
+
+  // Método que lo llamados desde los otros para que se muestre el modal
   async modalPresent(data: Hoja | null, onDismiss:(result: any)=> void){
     const modal = await this.modal.create({
       component: RunasDetailComponent,
       componentProps:{
         hoja: data
       },
-      cssClass:"modal-full-right-side"
     });
     modal.present();
     modal.onDidDismiss().then(result => {
