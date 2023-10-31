@@ -9,3 +9,12 @@
 ion-segment{
     display: flex;
 }
+
+.background-image-container {
+    background-image: url('/assets/img/runes/background/Domination_splash_art.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 20px; /* Aplica el margen solo al contenedor de la imagen */
+    padding: 20px; /* Otro espaciado interior si es necesario */
+}

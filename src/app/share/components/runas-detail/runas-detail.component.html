@@ -1,4 +1,5 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="background-image-container">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
   <ion-item>
     <ion-input label="nombre" labelPlacement="start" formControlName="nombre" type="text"></ion-input>
     <ion-buttons slot="end">
@@ -73,3 +74,4 @@
   <!-- Otros campos del formulario -->
   <button (click)="onSubmit()">Guardar</button>
 </form>
+</div>
