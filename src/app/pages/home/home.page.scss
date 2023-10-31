@@ -1,27 +1,62 @@
-#container {
-  text-align: center;
+.background {
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+ion-content {
+  background-image: url("/assets/img/home_background.jpg")!important;
+  --background: inherit;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+}
 
+.runes {
+  --background: none;
+  --width: 50em;
+  --border-radius: 100%;
+}
+
+.runes img {
+  display: flex;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 100%;
+}
+
+
+
+.runes-button{
+  --background:none;
+  display: flex;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 75%;
+  width: 25%;
+  padding: 2%;
+  top: 25%;
+  /* bottom: 25%; */
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.about {
+  --background:none;
+  display: flex;
+  position: absolute;
+  right: 75%;
+  width: 25%;
+  padding: 2%;
+  top: 25%;
+  /* bottom: 25%; */
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.about img {
+  display: flex;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 100%;
 }
-
-#container a {
-  text-decoration: none;
+ion-title{
+  font-weight: bold;
+  font-size: 3em;
+  color: #C89B3C;
+  background-color: #0A1428;
 }

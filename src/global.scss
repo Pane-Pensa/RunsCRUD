@@ -24,3 +24,25 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+:host{
+    .button-inner{
+        border-radius:100%;
+    }
+  }
+  
+ion-button::part(inner) {
+    border-radius: 100% !important;
+  }
+  ion-button::part(inner)::after {
+    border-radius: 100% !important;
+  }
+  
+  ion-button::part(native) {
+    border-radius: 100% !important;
+  }
+  
+  ion-button::part(native)::after {
+    border-radius: 100% !important;
+  }
+  
