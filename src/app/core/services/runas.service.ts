@@ -4,13 +4,13 @@ import { Hoja } from '../interfaces/hoja';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
-
 export class RuneNotFoundException extends Error{
 
 }
+
+@Injectable({
+providedIn: 'root'
+})
 export class RunasService {
 
   //Id de las paginas que deberemos de ir controlando
@@ -31,7 +31,7 @@ export class RunasService {
   // Método que recoge recoge todos las hojas de runas
   public getAll(): Observable<Hoja[]>{
     return this.http.get<Hoja[]>(environment.apiUrl+'/runes').pipe(tap((hojas:any[])=>{
-      this._hojas.next(hojas)
+      this._hojas.next(hojas);
     }))
     
     /*
@@ -52,16 +52,28 @@ export class RunasService {
   }
 
   // Método para obtener una hoja
-  public getHoja(id:number):Hoja{
-      var _hojas=[...this._hojas.value];
-      var index=_hojas.findIndex(h=>h.id==id);
-      var hoja:Hoja=_hojas[index]
-      if (index>0)
-        return hoja;
+  public getHoja(id:number):Observable<Hoja>{
+    return this.http.get<Hoja>(environment.apiUrl+`/runes/${id}`);
+    /*
+    var _hojas=[...this._hojas.value];
+    var index=_hojas.findIndex(h=>h.id==id);
+    var hoja:Hoja=_hojas[index]
+    if (index>0)
+      return hoja;
     throw new RuneNotFoundException();
+    */
   }
+
   // Método para eliminar una hoja
-  public deletePage(rune:Hoja):Observable<Hoja[]>{
+  public deletePage(rune:Hoja):Observable<Hoja>{
+    return new Observable<Hoja>(obs=> {
+      this.http.delete<Hoja>(environment.apiUrl+`/runes/${rune.id}`).subscribe(_=>{
+        this.getAll().subscribe(_=>{
+          obs.next(rune);
+        })
+      })
+    })
+    /*
     return new Observable(observer=>{
       var runes=[...this._hojas.value];
       var index= runes.findIndex(rune=>rune.id==rune.id);
@@ -72,10 +84,20 @@ export class RunasService {
       observer.next(runes);
       observer.complete;
     })
+    */
   }
 
   // Método para actulizar los datos de una hoja
   public updatePage(rune:Hoja):Observable<Hoja>{
+    return new Observable<Hoja>(obs=>{
+      this.config(rune)
+      this.http.patch<Hoja>(environment.apiUrl+`/runes/${rune.id}`, rune).subscribe(_=>{
+        this.getAll().subscribe(_=>{
+          obs.next(rune);
+        })
+      })
+    })
+    /*
     return new Observable<Hoja>(observer=>{
       var _hojas=[...this._hojas.value];
       var index=_hojas.findIndex(h=>h.id==rune.id);
@@ -89,10 +111,25 @@ export class RunasService {
       this._hojas.next(_hojas);
       observer.complete;
     });
+    */
   }
 
   // Método para crear una nueva hoja
   public addPage(rune:Hoja):Observable<Hoja>{
+    var _rune:any = {
+      id: rune.id,
+      fondo: rune.fondo,
+      nombre: rune.nombre,
+      runas_clave: rune.runas_clave,
+      runas_secundaria: rune.runas_secundaria,
+      miniatura: rune.miniatura
+    }
+    this.config(_rune)
+    return this.http.post<Hoja>(environment.apiUrl+"/runes", _rune).pipe(tap(_=>{
+      this.getAll().subscribe();
+    }))
+
+    /*
     return new Observable(observer=>{
       var runes=[...this._hojas.value];
       rune.id = ++this.id;
@@ -101,6 +138,7 @@ export class RunasService {
       this._hojas.next(runes);
       observer.next(rune);
     });
+    */
   }
 
   // Método para darle los valores indicados para las imagenes
