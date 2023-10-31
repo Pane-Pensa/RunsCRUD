@@ -1,29 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title class="ion-text-center">
+      RUNES
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <!--Botón para ir a la página sobre nostros-->
-  <ion-button (click)="about()">
-    About
-  </ion-button>
-  <!--Botón para ir a la página runes-->
-  <ion-button (click)="runes()">
-    Runes
-  </ion-button>
+<div class="background">
+  <ion-content [fullscreen]="true" >
+    <!--Botón para ir a la página sobre nostros-->
+    <ion-button (click)="about()" class="about" shaped="round">
+      <img src="/assets/img/pane-pensa.png">
+    </ion-button>
+    <!--Botón para ir a la página runes-->
 
-  <div id="container">
-    <strong>Listo para crear la app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+
+    <div class="runes-button">
+      <ion-button (click)="runes()" class="runes" fill="clear">
+          <img src='/assets/img/home_runesButton.png'>
+      </ion-button>
+    </div>
+  </ion-content>
+</div>
+
