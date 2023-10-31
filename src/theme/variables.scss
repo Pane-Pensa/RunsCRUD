@@ -10,6 +10,7 @@
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
   --ion-color-primary-tint: #4c8dff;
+  --ion-font-family:'League-Font';
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -241,4 +242,18 @@ html {
    * https://ionicframework.com/docs/layout/dynamic-font-scaling
    */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
+}
+
+@font-face{
+  font-family:'League-Font';
+  font-style:normal;
+  font-weight: bold;
+  src: url('../assets/fonts/BeaufortforLOL-Bold.otf');
+}
+
+@font-face{
+  font-family:'League-Font';
+  font-style:normal;
+  font-weight: normal;
+  src: url('../assets/fonts/BeaufortforLOL-Regular.otf');
 }
