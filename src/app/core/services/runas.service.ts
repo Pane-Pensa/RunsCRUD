@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Hoja } from '../interfaces/hoja';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,9 @@ export class RunasService {
   // Lista pública que lo recibe desde la privada
   hojas$: Observable<Hoja[]> = this._hojas.asObservable();
   
-  constructor() { }
+  constructor(
+    private http:HttpClient
+  ) { }
 
   /*
    * Métodos para manejar las hojas de runas 
@@ -26,6 +30,11 @@ export class RunasService {
 
   // Método que recoge recoge todos las hojas de runas
   public getAll(): Observable<Hoja[]>{
+    return this.http.get<Hoja[]>(environment.apiUrl+'/runes').pipe(tap((hojas:any[])=>{
+      this._hojas.next(hojas)
+    }))
+    
+    /*
     return new Observable(observer => {
       let lista: Hoja[] = [
         {id:1,fondo: "assets/img/runes/Dominacion.jpg",nombre: "Primera hoja", runas_clave: "Dominación", runas_secundaria: "Cosecha Oscura", miniatura: "assets/img/runes/secondary/Cosecha_Oscura.png"},
@@ -39,6 +48,7 @@ export class RunasService {
       observer.next(lista);
       observer.complete();
     });
+    */
   }
 
   // Método para obtener una hoja
