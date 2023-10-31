@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { SharedModule } from 'src/app/share/shared.module';
+import { RunesPage } from '../runes-page/runes.page';
 
 
 @NgModule({
