@@ -18,3 +18,16 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+.background {
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+  }
+  ion-content {
+    background-image: url("/src/assets/img/Background-Blue.jpg")!important;
+    --background: inherit;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+  }
