@@ -9,3 +9,32 @@
 ion-segment{
     display: flex;
 }
+form{
+    background-image: url('/assets/img/Background-Blue.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    height: 100%;
+    width: 100%;
+}
+.form-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2em;
+
+}
+.submitButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin:2em;
+}
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2em;
+    width: 4em;
+}
